@@ -1,0 +1,7 @@
+.phpunit.cache/
+.phpunit.result.cache
+debian/autoload.php.tpl
+debian/autoload.tests.php.tpl
+php/autoload.php
+wp-cli/
+vendor/

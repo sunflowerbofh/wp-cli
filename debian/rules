@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with phpcomposer
+
+execute_before_dh_auto_build:
+
+	# Build a template for phpab(1)
+	# (not needed if the package has no dependency)
+	phpabtpl \
+		--basedir php \
+		composer.json \
+		> debian/autoload.php.tpl
+
+	# Build a static classloader, shipped with the package
+	phpab --output php/autoload.php \
+		# Following line only needed if a template was built
+		--template debian/autoload.php.tpl php
+
+execute_before_dh_auto_test:
+	# Build classloader for tests
+	mkdir --parents vendor wp-cli
+	phpabtpl \
+		--require wp-cli/wp-cli \
+		# If packages from ''require-dev'' in ''composer.json''
+		# are actually needed to run the testsuite
+		--require phpspec/prophecy-phpunit \
+		# If ''files'' from ''autoload-dev'' in ''composer.json''
+		#--require-file ../<path to file> \
+		> debian/autoload.tests.php.tpl
+	phpab \
+		--output vendor/autoload.php \
+		--template debian/autoload.tests.php.tpl
+		tests
+	# Workaround to ensure the local class takes precedence during tests.
+	ln -sr php wp-cli/wp-cli
+
+override_dh_auto_test:
+	phpunit
