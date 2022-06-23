@@ -1,3 +1,4 @@
 bin/* usr/share/php/WP_CLI/bin
 php/* usr/share/php/WP_CLI/php
 templates/* usr/share/php/WP_CLI/templates
+vendor/* usr/share/php/WP_CLI/vendor
