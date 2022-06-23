@@ -1,9 +1,11 @@
 Source: php-wp-cli
 Section: php
-Priority:optional
+Priority: optional
 Maintainer: Katharina Drexel <katharina.drexel@bfh.ch>
 Build-Depends:
+ composer,
  debhelper-compat (= 13),
+ php-curl,
  phpab,
  pkg-php-tools,
 Rules-Requires-Root: no
@@ -30,5 +32,3 @@ Description: ${phpcomposer:description}
  wp-cli is a set of command-line tools for managing
  WordPress installations. You can update plugins, set up multisite
  installations and much more, without using a web browser.
-
-

@@ -1,3 +1,7 @@
 Test-Command: mkdir -p vendor && phpabtpl --require wp-cli/wp-cli > debian/autoload.tests.php.tpl && phpab -o vendor/autoload.php -t debian/autoload.tests.php.tpl --blacklist *\\classd --blacklist *\\classe tests && phpunit
 Restrictions: rw-build-tree, allow-stderr
-Depends: phpab, phpunit, pkg-php-tools, @
+Depends:
+ phpab,
+ phpunit,
+ pkg-php-tools,
+ @,
