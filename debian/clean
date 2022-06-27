@@ -1,6 +1,7 @@
-composer.lock
+.pc/
 .phpunit.cache/
 .phpunit.result.cache
+composer.lock
 debian/autoload.php.tpl
 debian/autoload.tests.php.tpl
 php/autoload.php
