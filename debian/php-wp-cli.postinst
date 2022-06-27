@@ -7,7 +7,10 @@ set -e
 case "${1}" in
 	configure)
 
-		ln -s /usr/share/php/WP_CLI/bin/wp /usr/bin/wp
+		if [ ! -L /usr/bin/wp ]
+		then
+			ln -s /usr/share/php/WP_CLI/bin/wp /usr/bin/wp
+		fi
 
 		if [ -e /usr/share/php/WP_CLI/utils/wp-completion.bash ]
 		then
