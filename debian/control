@@ -18,7 +18,7 @@ Package: php-wp-cli
 Architecture: all
 Depends:
  ${misc:Depends},
- ${phpcomposer:Debian-require},
+ php-wp-cli-bundle,
 Suggests:
  ${phpcomposer:Debian-suggest},
 Replaces:
