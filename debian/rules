@@ -11,8 +11,8 @@ execute_before_dh_auto_build:
 		composer.json \
 		> debian/autoload.php.tpl
 
-	#if ! grep -q 'vendor/autoload.php.tpl' debian/autoload.php.tpl; then \
-	#sed -i "/\\/\\/ Require/a require_once '../vendor/autoload.php" debian/autoload.php.tpl; fi
+	if ! grep -q 'vendor/autoload.php.tpl' debian/autoload.php.tpl; then \
+	sed -i "/\\/\\/ Require/a require_once '../vendor/autoload.php" debian/autoload.php.tpl; fi
 
 	# Build a static classloader, shipped with the package
 	phpab --tolerant --output php/autoload.php \
