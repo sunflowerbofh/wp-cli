@@ -4,14 +4,16 @@
 	dh $@ --with phpcomposer
 
 execute_before_dh_auto_build:
-	# create vendor dir
-	composer install --no-dev --no-progress --no-interaction
 	# Build a template for phpab(1)
 	# (not needed if the package has no dependency)
 	phpabtpl \
 		--basedir php \
 		composer.json \
 		> debian/autoload.php.tpl
+
+	#if ! grep -q 'vendor/autoload.php.tpl' debian/autoload.php.tpl; then \
+	#sed -i "/\\/\\/ Require/a require_once '../vendor/autoload.php" debian/autoload.php.tpl; fi
+
 	# Build a static classloader, shipped with the package
 	phpab --tolerant --output php/autoload.php \
 		--template debian/autoload.php.tpl php
