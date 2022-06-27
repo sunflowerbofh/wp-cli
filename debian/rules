@@ -18,24 +18,3 @@ execute_before_dh_auto_build:
 	phpab --tolerant --output php/autoload.php \
 		--template debian/autoload.php.tpl php
 	# Following[last] line only needed if a template was built
-
-execute_before_dh_auto_test:
-	## Build classloader for tests
-	#mkdir --parents vendor wp-cli
-	#phpabtpl \
-	#	--require wp-cli/wp-cli \
-	#	# If packages from ''require-dev'' in ''composer.json''
-	#	# are actually needed to run the testsuite
-	#	--require phpspec/prophecy-phpunit \
-	#	# If ''files'' from ''autoload-dev'' in ''composer.json''
-	#	#--require-file ../<path to file> \
-	#	> debian/autoload.tests.php.tpl
-	#phpab \
-	#	--output vendor/autoload.php \
-	#	--template debian/autoload.tests.php.tpl
-	#	tests
-	# Workaround to ensure the local class takes precedence during tests.
-	#ln -sr php wp-cli/wp-cli
-
-#override_dh_auto_test:
-	#phpunit
