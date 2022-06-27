@@ -5,5 +5,5 @@ composer.lock
 debian/autoload.php.tpl
 debian/autoload.tests.php.tpl
 php/autoload.php
-wp-cli/
 vendor/
+wp-cli/

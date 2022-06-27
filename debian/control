@@ -3,7 +3,6 @@ Section: php
 Priority: optional
 Maintainer: Katharina Drexel <katharina.drexel@bfh.ch>
 Build-Depends:
- composer,
  debhelper-compat (= 13),
  php-curl,
  phpab,
@@ -17,8 +16,8 @@ Vcs-Git: https://github.com/sunflowerbofh/wp-cli
 Package: php-wp-cli
 Architecture: all
 Depends:
- ${misc:Depends},
  php-wp-cli-bundle,
+ ${misc:Depends},
 Suggests:
  ${phpcomposer:Debian-suggest},
 Replaces:
