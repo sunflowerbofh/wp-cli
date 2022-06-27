@@ -1,0 +1,31 @@
+#!/bin/sh
+
+#DEBHELPER#
+
+set -e
+
+case "${1}" in
+	configure)
+
+		ln -s /usr/share/php/WP_CLI/bin/wp /usr/bin/wp
+
+		if [ -e /usr/share/php/WP_CLI/utils/wp-completion.bash ]
+		then
+			echo "source /usr/share/php/WP_CLI/utils/wp-completion.bash" \
+		 	 > /etc/profile.d/wp-completion.sh
+		fi
+
+		;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+
+		;;
+
+	*)
+
+		echo "postinst called with unknown argument \`${1}'" >&2
+		exit 1
+		;;
+esac
+
+exit 0

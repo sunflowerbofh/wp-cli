@@ -1,0 +1,34 @@
+#!/bin/sh
+
+#DEBHELPER#
+
+set -e
+
+case "${1}" in
+	purge | remove)
+		if [ -L /usr/bin/wp ]
+		then
+			TARGET=$(readlink /usr/bin/wp)
+			if [ "$TARGET" = "/usr/share/php/WP_CLI/bin/wp" ]
+			then
+				rm -f /usr/bin/wp
+			fi
+		fi
+
+		if [ -e /etc/profile.d/wp-completion.sh ]
+		then
+			rm -f /etc/profile.d/wp-completion.sh
+		fi
+		;;
+
+	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+
+		;;
+
+	*)
+		echo "postrm called with unknown argument \`${1}'" >&2
+		exit 1
+		;;
+esac
+
+exit 0
