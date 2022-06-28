@@ -9,7 +9,7 @@ case "${1}" in
 
 		if [ ! -L /usr/bin/wp ]
 		then
-			ln -s /usr/share/php/WP_CLI/bin/wp /usr/bin/wp
+			ln -s /usr/share/php/WP_CLI/vendor/wp-cli/wp-cli/bin/wp /usr/bin/wp
 		fi
 
 		if [ -e /usr/share/php/WP_CLI/utils/wp-completion.bash ]

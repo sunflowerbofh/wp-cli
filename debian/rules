@@ -15,6 +15,6 @@ execute_before_dh_auto_build:
 	sed -i "/\\/\\/ Require/a require_once '../vendor/autoload.php" debian/autoload.php.tpl; fi
 
 	# Build a static classloader, shipped with the package
-	phpab --tolerant --output php/autoload.php \
-		--template debian/autoload.php.tpl php
+	phpab --tolerant --output autoload.php --template debian/autoload.php.tpl \
+		vendor/wp-cli/wp-cli/php
 	# Following[last] line only needed if a template was built
